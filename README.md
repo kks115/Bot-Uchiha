@@ -1,11 +1,20 @@
-# Bot Uchiha
+# Uchiha Bot
 
-Welcome to the Bot Uchiha project!
+![Uchiha Bot](https://media.giphy.com/media/KSAG8wm8JYkqc/giphy.gif)
 
-Here is a cool GIF:
+This is a bot dedicated to the Uchiha clan from Naruto. It provides various functionalities related to the Uchiha clan, including but not limited to:
 
-![Uchiha GIF](https://media.giphy.com/media/KSAG8wm8JYkqc/giphy.gif)
+1. **Information Retrieval**: Get detailed information about Uchiha characters.
+2. **Interactive Quizzes**: Test your knowledge about the Uchiha clan.
+3. **Fan Art Showcase**: View and share fan art dedicated to the Uchihas.
 
-## Overview
+## Features
+- User-friendly interface
+- Regular updates with new Uchiha-related content
+- Community sharing options
 
-This project is focused on enhancing the capabilities of bots in understanding and processing Uchiha-related content.
+## Contributors
+- te1436
+
+## License
+MIT License

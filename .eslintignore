@@ -1,2 +1,15 @@
-dist/
-node_modules/
+{
+  "env": {
+    "node": true
+  },
+  "extends": ["eslint:recommended"],
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "rules": {
+    "no-unused-vars": "off",   
+    "no-console": "off"
+  },
+  "ignorePatterns": ["dist/**"] // Ignora TODOS os arquivos na pasta dist
+}

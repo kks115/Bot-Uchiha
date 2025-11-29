@@ -1,19 +1,13 @@
 {
   "compilerOptions": {
-    "target": "ES2020",                 // Define o alvo da transpilação do código para ES2020
-    "module": "CommonJS",              // Define o sistema de modulação usado (Node.js usa CommonJS)
-    "strict": true,                    // Habilita todas as verificações rigorosas do TypeScript
-    "esModuleInterop": true,           // Permite interoperabilidade com módulos ES6
-    "skipLibCheck": true,              // Ignora verificações em arquivos de tipagem de bibliotecas
-    "forceConsistentCasingInFileNames": true, // Enforce uso consistente de maiúsculas/minúsculas
-    "outDir": "./dist"                 // Diretório de saída para os arquivos transpilados
+    "target": "ES2020",
+    "module": "CommonJS",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "./dist"
   },
-  "include": [
-    "src/**/*",                        // Inclui todos os arquivos na pasta src e seus subdiretórios
-    "./engine-requirements.js"         // Inclui explicitamente o arquivo específico, fora da src/
-  ],
-  "exclude": [
-    "node_modules",                    // Exclui a pasta de dependências instaladas
-    "dist"                             // Exclui a pasta de saída gerada pelo TypeScript
-  ]
+  "include": ["./dummy.ts"], // Apenas o arquivo dummy é incluído
+  "exclude": ["dist", "node_modules"] // Exclui dist e node_modules
 }

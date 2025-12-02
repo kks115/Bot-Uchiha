@@ -1,26 +1,30 @@
 import express from "express";
-import helmet from "helmet";
-import { loadEnv } from "./config/env";
-import logger from "./utils/logger";
-import { verifyToken } from "./controllers/verifyController";
-import { receiveMessage } from "./controllers/messageController";
-import { verifySignature, apiRateLimiter } from "./utils/security";
-import { sendLogToWhodbok } from "./services/whodbok.service";
-
-loadEnv();
+import dotenv from "dotenv";
+dotenv.config();
 
 const app = express();
-app.use(express.json({ limit: "1mb" }));
-app.use(helmet());
-app.use(apiRateLimiter);
+app.use(express.json());
 
-app.get("/webhook", verifyToken);
-app.post("/webhook", verifySignature, async (req, res) => {
-  await sendLogToWhodbok({ event: "webhook_received", body: req.body });
-  return receiveMessage(req, res);
+const VERIFY_TOKEN = process.env.VERIFY_TOKEN;
+
+app.get("/webhook", (req, res) => {
+  const mode = req.query["hub.mode"];
+  const token = req.query["hub.verify_token"];
+  const challenge = req.query["hub.challenge"];
+
+  if (mode && token && mode === "subscribe" && token === VERIFY_TOKEN) {
+    console.log("Webhook verificado com sucesso!");
+    res.status(200).send(challenge);
+  } else {
+    res.sendStatus(403);
+  }
 });
 
-const PORT = Number(process.env.PORT) || 3000;
-app.listen(PORT, () => {
-  logger.info(`Uchiha-Bot v10.0.1 rodando na porta ${PORT}`);
+app.post("/webhook", (req, res) => {
+  console.log("Mensagem recebida:", JSON.stringify(req.body, null, 2));
+  res.sendStatus(200);
+});
+
+app.listen(process.env.PORT || 3000, () => {
+  console.log("🚀 Servidor rodando...");
 });

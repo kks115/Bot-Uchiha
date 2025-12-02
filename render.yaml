@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: uchiha-bot
+    env: node
+    plan: free
+    repo: <YOUR_GIT_REPO_URL>
+    region: oregon
+    buildCommand: npm run build
+    startCommand: npm start
+    envVars:
+      - key: VERIFY_TOKEN
+        fromParameter: VERIFY_TOKEN
+      - key: WHATSAPP_TOKEN
+        fromParameter: WHATSAPP_TOKEN
+      - key: PHONE_NUMBER_ID
+        fromParameter: PHONE_NUMBER_ID
+      - key: APP_SECRET
+        fromParameter: APP_SECRET
+      - key: WHODBOK_API_KEY
+        fromParameter: WHODBOK_API_KEY
+      - key: WHODBOK_ENDPOINT
+        fromParameter: WHODBOK_ENDPOINT
